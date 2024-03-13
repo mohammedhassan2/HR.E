@@ -1,0 +1,50 @@
+﻿@inherits LayoutComponentBase
+@page "/HR.PRO"
+@using HR.ewb.Lang
+
+
+<header dir="@LanguageSettings.LanguageType()">
+    <div class="top-row px-4">
+        <a @onclick="ToggleNavMenu" target="_blank">About</a>
+        <button onclick="toggleSidebar()">Toggle Sidebar</button>
+    </div>
+</header>
+<div  dir="@LanguageSettings.LanguageType()" class="page">
+    <div class="sidebar" style="display: block;">
+        <NavMenu />
+    </div>
+   
+    <main>
+        <section class="section">
+            @Body
+
+        </section>
+    </main>
+</div>
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        if (sidebar.style.display === 'none' || sidebar.style.display === ''){
+            sidebar.style.display = 'block';
+        } 
+        else {
+            sidebar.style.display = 'none';
+        }
+    }
+</script>
+
+@code{
+
+    private bool IsNavMenuVisible{ get; set; }
+    private void ToggleNavMenu()
+    {
+        IsNavMenuVisible = !IsNavMenuVisible;
+    }
+
+}

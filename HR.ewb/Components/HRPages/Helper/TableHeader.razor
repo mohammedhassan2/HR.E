@@ -1,0 +1,17 @@
+﻿
+<div class="my-table-div b-row top-table row">
+    @foreach (var i in item)
+    {
+        <div class="my-table-div col">@i</div>
+    }
+</div>
+@code {
+    /// <summary>
+    /// number column in the table nax length is 9
+    /// you are need use div and giv him class my-table
+    /// and you can use component TableBody any time after this component
+    /// </summary>
+    [Parameter]
+    public List<string> item { get; set; } = new List<string>();
+
+}

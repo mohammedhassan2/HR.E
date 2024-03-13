@@ -1,0 +1,99 @@
+﻿@rendermode InteractiveServer
+@page "/Employees"
+
+<div class="Add-B add-all" id="Add">
+    <div class="text-add text-item">
+        <h2> اضافة موظف جديد</h2>
+        <a @onclick="()=> colaped()">X</a>
+    </div>
+    <AddEmployee></AddEmployee>
+</div>
+<div class="page my-page">
+    <dev class="header-bra">
+        <a class="btn-add" @onclick="()=>colaped()">
+            @TesxtBTNadd
+        </a>
+        <div class="search">
+            <input class="search-inp" type="search" value="" />
+            <a href="#"><i>&</i></a>
+            <a href="#"><i>&</i></a>
+        </div>
+    </dev>
+    <div class=" my-table">
+        <TableHeader item="@itemHeadTable"></TableHeader>
+        @for (int i = 0; i < 500; i++)
+        {
+            <div class="my-table-div b-row row">
+                <TableBody items="@itemBodeTableDemo"></TableBody>
+            </div>
+        }
+    </div>
+</div>
+@if (IsVisibaled)
+{
+    TesxtBTNadd = "+ اضافة متدرب جديد";
+    <style>
+        .Add-B {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .btn-add{
+            position:fixed;
+            margin:20px;
+            bottom:0;
+            z-index:10;
+        }
+
+        .search a, .search .search-inp {
+            display: none;
+        }
+
+    </style>
+}
+
+else
+{
+    TesxtBTNadd = "+ اضافة";
+    <style>
+        .Add-B {
+            display: none;
+        }
+    </style>
+}
+@code {
+    private List<string> itemHeadTable = new List<string>
+    {
+        "رقم الموظف",
+        "اسم الموظف ",
+        "اسم الوضيفة",
+        "الفرع",
+        "القسم",
+        "رقم الهاتف",
+        "البريد الالكتروني",
+        "الحالة",
+        "تاريخ الانشاء",
+        "اجراء",
+    };
+    private List<string> itemBodeTableDemo = new List<string>
+    {
+        "1213543",
+        "اصيل حسان",
+        "مبرمج",
+        "فرع 1",
+        "قسم 1",
+        "76578768",
+        "aseel@hassan.com",
+        "عاطل",
+        "2023/11/11",
+    }; private bool IsVisibaled;
+    private void colaped()
+    {
+        IsVisibaled = !IsVisibaled;
+        js.InvokeVoidAsync("toggleSidebar");
+    }
+    private string TesxtBTNadd = "+ اضافة موظف جديد";
+
+}

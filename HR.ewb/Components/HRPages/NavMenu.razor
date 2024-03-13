@@ -1,0 +1,118 @@
+﻿@rendermode InteractiveServer
+@using HR.ewb.Components.HRPages.Helper
+@using HR.ewb.Lang
+
+<input type="checkbox" title="Navigation menu" class=" navbar-toggler" />
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <h1 class="my-title">نظام ادارة الموارد البشرية</h1>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link any" href="#" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span>الرئيسية
+            </NavLink>
+        </div>
+        
+        <div  class="nav-item px-3">
+            <NavLink class="nav-link" href="/branches">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>الفروع
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/Trainees">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>المتدربين
+            </NavLink>
+        </div>
+
+        <div class="navbar-col nav-item">
+            <NavLink class="nav-link" @onclick="()=>IsCollapsEmployees =!IsCollapsEmployees">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>الموظفين
+            </NavLink>
+            @if (IsCollapsEmployees)
+            {
+                <Collaps Text="اقسام الموظفين" Href="EmployeesSections"></Collaps>
+                <Collaps Text="الموظفين" Href="Employees"></Collaps>
+            }
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Countract">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>العقود
+            </NavLink>
+        </div>
+
+        <div class="navbar-col nav-item">
+            <NavLink class="nav-link" @onclick="()=>IsCollapsContracts =!IsCollapsContracts">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>الاجازات
+            </NavLink>
+            @if (IsCollapsContracts)
+            {
+                <Collaps Text="اقسام الاجازات" Href="HolidaySections"></Collaps>
+                <Collaps Text="الاجازات" Href="Holiday"></Collaps>
+            }
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Salaries">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>الرواتب
+            </NavLink>
+        </div>
+
+        <div class="navbar-col nav-item">
+            <NavLink class="nav-link" @onclick="()=>IsCollapsAllowances =!IsCollapsAllowances">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>العلاوات
+            </NavLink>
+            @if (IsCollapsAllowances)
+            {
+                <Collaps Text="اقسام العلاوات" Href="BonusSections"></Collaps>
+                <Collaps Text="العلاوات" Href="Bonuses"></Collaps>
+            }
+        </div>
+
+        <div class="navbar-col nav-item">
+            <NavLink class="nav-link" @onclick="()=>IsCollapsDiscounts =!IsCollapsDiscounts">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>الخصومات
+            </NavLink>
+            @if (IsCollapsDiscounts)
+            {
+                <Collaps Text="اقسام الخصومات" Href="DiscountSections"></Collaps>
+                <Collaps Text="الخصومات" Href="Discounts"></Collaps>
+            }
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="EmployeesCourses">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>كورسات الموضفين           
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="EmployeesMessages">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> رسائل الموضفين
+            </NavLink>
+        </div>
+
+        <div class="navbar-col nav-item">
+            <NavLink class="nav-link" @onclick="()=>IsCollapsManagement =!IsCollapsManagement">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>الادارة
+            </NavLink>
+            @if (IsCollapsManagement)
+            {
+                <Collaps Text="المستخدمين" Href="#"></Collaps>
+                <Collaps Text="الادوار والصلاحيات" Href="#"></Collaps>
+                <Collaps Text="اعدادات النظام" Href="#"></Collaps>
+            }
+        </div>
+        
+    </nav>
+
+</div>
+
+
+@code {
+    public bool IsCollapsEmployees;
+    public bool IsCollapsContracts;
+    public bool IsCollapsAllowances;
+    public bool IsCollapsDiscounts;
+    public bool IsCollapsManagement;
+}

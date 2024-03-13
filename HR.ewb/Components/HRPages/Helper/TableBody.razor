@@ -1,0 +1,19 @@
+﻿@foreach (var item in items)
+{
+    <div class="my-table-div col">@item </div>
+}
+<div class="my-table-div col">
+    <a href="#"><i>&</i></a>
+    <a href="#"><i>&</i></a>
+</div>
+
+@code {
+    /// <summary>
+    /// number column in the table nax length is 9
+    /// you are need use div and giv him class my-table
+    /// and you can use component TableHeader 1 time before this component
+    /// </summary>
+    [Parameter]
+    public List<string> items{ get; set; }
+
+}

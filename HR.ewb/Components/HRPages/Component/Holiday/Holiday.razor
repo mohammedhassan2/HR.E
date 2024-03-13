@@ -1,0 +1,88 @@
+﻿@rendermode InteractiveServer
+@page "/Holiday"
+
+<div class="Add-B add-all" id="Add">
+    <div class="text-add text-item">
+        <h2> اجازة جديدة</h2>
+        <a @onclick="()=> colaped()">X</a>
+    </div>
+    <AddHoliday></AddHoliday>
+</div>
+<div class="page">
+    <dev class="header-bra">
+        <a class="btn-add" @onclick="()=> colaped()">
+            @TesxtBTNadd
+            </a>
+        <div class="search">
+            <input class="search-inp" type="search" value="" />
+                <a href="#"><i>&</i></a>
+                <a href="#"><i>&</i></a>
+            </div>
+    </dev>
+    <div class=" my-table">
+        <TableHeader item="itemHeadTable"></TableHeader>
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="my-table-div b-row row">
+                <TableBody items="@itemBodeTableDemo"></TableBody>
+            </div>
+        }
+    </div>
+</div>
+
+@if (IsVisibaled)
+{
+    TesxtBTNadd = "+ اجازة جديدة";
+    <style>
+        .Add-B{
+            display:flex;
+            justify-items:center;
+            align-items:center;
+            flex-direction:column;
+        }
+        .search a, .search .search-inp {
+            display:none;
+        }
+
+    </style>
+}
+else
+{
+    TesxtBTNadd = "+ اضافة";
+    <style>
+        .Add-B {
+            display: none;
+        }
+    </style>
+}
+@code{
+    private List<string> itemHeadTable = new List<string>
+    {
+        "اسم الاجازة",
+        "اسم الموظف",
+        "اسم القسم",
+        "عددالايام",
+        "تاريخ البداية",
+        "تاريخ النهاية",
+        "اجراء",
+        "تاريخ الانشاء",
+    };
+    private List<string> itemBodeTableDemo = new List<string>
+    {
+        "الاجازة 1",
+        "علي صالح",
+        "قسم 1",
+        "91",
+        " 1",
+        " 17",
+        " 98",
+    };
+    private bool IsVisibaled;
+    private void colaped()
+    {
+        IsVisibaled = !IsVisibaled;
+        js.InvokeVoidAsync("toggleSidebar");
+    }
+    private string TesxtBTNadd = "+ اجازة جديدة";
+
+}

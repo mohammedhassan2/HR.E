@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+@page "/LogIn"
+<PageTitle>Log In</PageTitle>
+<div class="login">
+    <div class="log-container">
+        <div class="logo">
+            <img height="50px" src="./Image/Digimarc-Logo.png" alt="Alternate Text" />
+            <h1>HR Pro</h1>
+        </div>
+        <div class="select">
+            <select name="language">
+                <option>ar</option>
+                <option>en</option>
+            </select>
+            <select name="type">
+                <option>الادارة</option>
+                <option>مشرف</option>
+            </select>
+        </div>
+        <div class="log-body">
+            <h2>تسجيل الدخول</h2>
+            <p>البريد الاكتروني</p>
+            <input type="email" />
+            <p>كلمة السر</p>
+            <input type="password" />
+            <button type="submit" class="log-inn">
+                <a class="LogA" href="/HRPRO">تسجيل الدخول</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@code {
+
+}
